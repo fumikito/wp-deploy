@@ -1,0 +1,22 @@
+{
+    "name": "fumikito/wp-deploy",
+    "description": "Deploy WordPress to remote server.",
+    "type": "library",
+    "license": "GPL-3.0-or-later",
+    "authors": [
+        {
+            "name": "fumikito",
+            "email": "guy@hametuha.com"
+        }
+    ],
+    "minimum-stability": "stable",
+    "require": {
+        "symfony/console": "^3.4",
+        "symfony/process": "^3.4"
+    },
+    "autoload": {
+        "psr-0": {
+            "Fumikito\\WpDeploy": "src"
+        }
+    }
+}

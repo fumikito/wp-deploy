@@ -1,0 +1,8 @@
+{
+  "output": "wp-deploy.phar",
+  "chmod": "0755",
+  "compactors": [],
+  "directories": ["src", "vendor"],
+  "main": "main.php",
+  "stub": true
+}
