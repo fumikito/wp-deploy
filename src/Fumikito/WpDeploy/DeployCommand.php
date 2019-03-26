@@ -214,6 +214,8 @@ class DeployCommand extends Command {
 			$line[] = '.';
 			$line[] = "{$host}:/{$target_dir}/{$relative_path}/{$base_name}";
 			$process = new Process( $line );
+			// Set timeout for 60 min to prevent from timeout depending on network speed.
+			$process->setTimeout( 3600 );
 			$process->run();
 			if ( ! $process->isSuccessful() ) {
 				throw new ProcessFailedException( $process );
