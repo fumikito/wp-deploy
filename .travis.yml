@@ -11,14 +11,12 @@ branches:
   - master
   - "/v?\\d+\\.\\d+\\.\\d+/"
 before_script:
-- pwd
 - composer install
 - curl -LSs https://box-project.github.io/box2/installer.php | php
 - php -d phar.readonly=0 ./box.phar build
 script:
 - "./wp-deploy.phar --help"
 before_deploy:
-  - pwd
   - rm -rf ./vendor
   - rm ./wp-deploy.phar
   - composer install --prefer-dist --no-dev --no-interaction
@@ -31,4 +29,4 @@ deploy:
   on:
     repo: fumikito/wp-deploy
     tags: true
-
+  skip_cleanup: true
