@@ -1,3 +1,4 @@
 /vendor/
 composer.lock
-wp-deploy.phar
+/wp-deploy.phar
+/box.phar

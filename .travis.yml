@@ -17,6 +17,7 @@ before_script:
 script:
 - "./wp-deploy.phar --help"
 before_deploy:
+  - pwd
   - rm -rf ./vendor
   - rm ./wp-deploy.phar
   - composer install --prefer-dist --no-dev --no-interaction
@@ -25,7 +26,7 @@ deploy:
   provider: releases
   api_key:
     secure: U65PoQcL5/ilnZvDlziA76Di/Ho+wPYoYDMx9ySiNm2CXzD3/A3j/AQySgCGZj8wFNkep9+K4yIjDgw707uXxZvmtaEohvTIS6pun4u1V613sYT1OB4XXpwfkNZe9YBkth2KYF59yf046YUq4mjAbr+br+ZBY6ta+FtUlBtMbjp2QG+4fwSaR+gH3tcNu7EDO6mIJWYxUbawwaTFpQ/vsRnSyVUwUOMWfjS3Ayf0Mh/QdGbsFXC5wBwDLL/SbLf8UnLYIR4KABCvcjQTHrQpckJVwDOcp5XOEd0jMI6GzzGiXyLWcdpETg4Rx+OlixMwMTMdERLW+6wY9GsBRy+3dVkI2ET6/yStIoWsx9LSkZ1nShXsuzrB6Ym+xvsCFh7MaU18lYaCXUedco7Li7zZ2YJUCvch2YtcHcq5zfZREZc9HY9mth7AJbsuOF+oJT1sccYAdlhb9PtbWamGtT580iCnWt5vedNMbGdJ2kR0KWmjyvOvrUnoYX59j1qnttg3pMop7l3jCcJakEiwHvPaI1U6AKIfgWyQtf9YK/xMxKE1uxGfD8Q4gR0gEtt+nXTWNTVl1ivCRN/IRiH0YJwOMJoJuzqC1FMKcbakOomKb5vmuyMJzl1W72DxMMeS142Izby9cICcJspj4k1w/kRBGRcNbnOGX8iVWDbjGkdtVU4=
-  file: wp-deploy.phar
+  file: ./wp-deploy.phar
   on:
     repo: fumikito/wp-deploy
     tags: true
