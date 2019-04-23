@@ -29,4 +29,5 @@ deploy:
   on:
     repo: fumikito/wp-deploy
     tags: true
+    php: '7.0'
   skip_cleanup: true
