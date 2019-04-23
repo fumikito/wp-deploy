@@ -21,6 +21,7 @@ before_deploy:
   - rm ./wp-deploy.phar
   - composer install --prefer-dist --no-dev --no-interaction
   - php -d phar.readonly=0 ./box.phar build
+  - chmod +x ./wp-deploy.phar
 deploy:
   provider: releases
   api_key:
