@@ -2,6 +2,8 @@
 
 Deploy WordPress Theme or Plugin via ssh.
 
+[![Travis CI](https://travis-ci.org/fumikito/wp-deploy.svg?branch=master)](https://travis-ci.org/fumikito/wp-deploy)
+
 ## Installation
 
 Download a phar file in [releases](https://github.com/fumikito/wp-deploy/releases).
