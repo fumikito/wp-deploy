@@ -88,7 +88,7 @@ class DeployCommand extends Command {
 		chdir( $working_dir );
 		// Clone git.
 		$output->writeln( sprintf( 'Cloning <info>%s</info> into <info>%s</info>', $repo, getcwd() ) );
-		$process = new Process( [ 'git', 'clone', $repo, $base_name ] );
+		$process = new Process( [ 'git', 'clone', $repo, $base_name ], null, null, null, 600 );
 		$process->run();
 		if ( ! $process->isSuccessful() ) {
 			throw new ProcessFailedException( $process );
@@ -109,7 +109,7 @@ class DeployCommand extends Command {
 		// Composer.
 		if ( file_exists( 'composer.json' ) ) {
 			$output->write( 'Composer found. Installing...  ' );
-			$process = new Process( [ 'composer', 'install', '--no-dev' ], null, null, null, 300 );
+			$process = new Process( [ 'composer', 'install', '--no-dev' ], null, null, null, 600 );
 			$process->run();
 			if ( ! $process->isSuccessful() ) {
 				throw new ProcessFailedException( $process );
@@ -130,7 +130,7 @@ class DeployCommand extends Command {
 				$commands[] = [ 'npm', 'run', $npm_script ];
 			}
 			foreach ( $commands as $line ) {
-				$process = new Process( $line, null, null, null, 300 );
+				$process = new Process( $line, null, null, null, 600 );
 				$process->run();
 				if ( ! $process->isSuccessful() ) {
 					throw new ProcessFailedException( $process );
@@ -206,6 +206,7 @@ class DeployCommand extends Command {
 			$line = [
 				'rsync',
 				'-rvct',
+				'--delete'
 			];
 			if ( $key = $input->getOption( 'key' ) ) {
 				$line[] = '-e';
